@@ -18,7 +18,7 @@ BASEDIR="$(dirname "$0")"
 docker build . -t nvidia-powerai -f ${BASEDIR}/Dockerfile
 
 # run a few tensorflow tests
-nvidia-docker run --rm -v ${BASEDIR}/results:/tmp/results  nvidia-powerai bash -c "source /opt/DL/tensorflow/bin/tensorflow-activate; python /opt/DL/tensorflow/bin/test-tensorflow-installation.py > /tmp/results/results.txt 2>&1"
+nvidia-docker run --rm -v ${BASEDIR}/results:/tmp/results  nvidia-powerai bash -c "source /opt/DL/tensorflow/bin/tensorflow-activate; python /opt/DL/tensorflow/lib/python2.7/site-packages/tensorflow/examples/learn/multiple_gpu.py --test_with_fake_data > /tmp/results/results.txt 2>&1"
 
 # get a timestamp
 now=`date +"%m_%d_%Y-%H:%M:%S"`
