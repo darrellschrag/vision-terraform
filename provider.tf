@@ -24,17 +24,14 @@ variable "ibmcloud_api_key" {
 #################################################
 
 provider "ibm" {
-    region           =  "${var.vpc_region}"
+    region           = var.vpc_region
     version          = ">= 0.24.4"
-    ibmcloud_api_key = "${var.ibmcloud_api_key}"
+    generation       = 2
+    ibmcloud_api_key = var.ibmcloud_api_key
 }
 
 provider "null" {
     version = "~> 2.1"
-}
-
-provider "random" {
-    version = "~> 2.2"
 }
 
 provider "tls" {
